@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejtvény</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffeec2, #ffd68a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    .poem {
+      font-size: 1.2rem;
+      white-space: pre-line;
+    }
+    input[type="password"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #ff8c00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .reveal {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="login">
+      <div class="poem">
+        Lángolok, de nem vagyok kemence,
+Füstölök, de nem vagyok kémény.
+Fejem felhő, lábam tenger takarja,
+Én vagyok Európa legnagyobbja.
+      </div>
+      <br>
+        <label for="password"></label><input type="password" id="password" placeholder="Mi vagyok én?">
+      <button onclick="checkPassword()">Megfejtés</button>
+      <p id="error" class="hidden" style="color:red;">Hibás jelszó, próbáld újra!</p>
+    </div>
+
+    <div id="secret" class="hidden">
+      <h2>🌟 Megfejtetted! 🌟</h2>
+      <div class="reveal">
+        <p><strong>Megfejtetted:</strong> Etna 🌋</p>
+        <p>És ez csak egyet jelenthet...</p>
+        <p>Úti célunk: <strong>Szicília!</strong><br>Tenger, vulkán, citromfák... és mi ketten ❤️</p>
+        <p>✈️ Indulás: [Ide írd be az utazás dátumát]</p>
+        <p>🚗 Jármű: Fiat 500</p>
+        <p>🧳 Csomagolás: szükséges</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const correctPassword = "Etna";
+      const input = document.getElementById("password").value.trim();
+      if (input.toLowerCase() === correctPassword.toLowerCase()) {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("secret").classList.remove("hidden");
+      } else {
+        document.getElementById("error").classList.remove("hidden");
+      }
+    }
+  </script>
+</body>
+</html>
